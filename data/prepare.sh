@@ -126,19 +126,3 @@ python vocab.py \
 }
 
 bio_formatting
-
-
-# ****************** BIO-tagging DATA FORMATTING ****************** #
-
-function download () {
-    FILE=polisis-300d-137M-subword.txt
-    if [[ ! -f $FILE ]]; then
-        fileid="1EIwu1ahCmoHkAIpnrG-fmosbu3qsCbda"
-        baseurl="https://drive.google.com/uc?export=download"
-        curl -c ./cookie -s -L "${baseurl}&id=${fileid}" > /dev/null
-        curl -Lb ./cookie "${baseurl}&confirm=`awk '/download/ {print $NF}' ./cookie`&id=${fileid}" -o ${FILE}
-        rm cookie
-    fi
-}
-
-download
